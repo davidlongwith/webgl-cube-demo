@@ -31,6 +31,14 @@
 
 			camera.position.z = 6;    // move camera back to see object
       
+      // add grid
+      var size = 300;
+      var divisions = 10;
+      var gridHelper = new THREE.GridHelper( size, divisions );
+      gridHelper.rotation.x = Math.PI/2;
+      gridHelper.position.set(0,0,-400);
+      scene.add( gridHelper );
+      
       // LIGHTING
       
       // add soft lighting to entire scene, no light source
