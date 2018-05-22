@@ -36,9 +36,9 @@
       camera.position.set( 0, 0, 6 );   // x,y,z
       controls.update();
       
-      // GRIDS
+      // THE GRID
       
-      // general dimensions
+      // grid dimensions
       var size = 800;                                               // size of the grids (2x position for squared grid)
       var divisions = 10;                                           // number of divisions in the grids
       
@@ -54,7 +54,24 @@
 
       var gridTop = new THREE.GridHelper( size, divisions );     
       gridTop.position.set(0,400,0);                                                     
-      scene.add( gridTop ); 
+      scene.add( gridTop );
+      
+      var gridBottom = new THREE.GridHelper( size, divisions );     
+      gridBottom.position.set(0,-400,0);                                                     
+      scene.add( gridBottom );
+      
+      var gridLeft = new THREE.GridHelper( size, divisions );     
+      gridLeft.position.set(-400,0,0);
+      gridLeft.rotation.z = Math.PI/2;
+      scene.add( gridLeft );
+      
+      var gridRight = new THREE.GridHelper( size, divisions );     
+      gridRight.position.set(400,0,0);
+      gridRight.rotation.z = Math.PI/2;
+      scene.add( gridRight );
+
+      
+      
       
       // LIGHTING
       
