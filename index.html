@@ -39,7 +39,7 @@
       // GRIDS
       
       // general dimensions
-      var size = 300;                                               // size of the grids
+      var size = 800;                                               // size of the grids (2x position for squared grid)
       var divisions = 10;                                           // number of divisions in the grids
       
       var gridBack = new THREE.GridHelper( size, divisions );       // create the grid using GridHelper
@@ -50,7 +50,11 @@
       var gridFront = new THREE.GridHelper( size, divisions );     
       gridFront.position.set(0,0,400);                            
       gridFront.rotation.x = Math.PI/2;                            
-      scene.add( gridFront );                                      
+      scene.add( gridFront );
+
+      var gridTop = new THREE.GridHelper( size, divisions );     
+      gridTop.position.set(0,400,0);                                                     
+      scene.add( gridTop ); 
       
       // LIGHTING
       
