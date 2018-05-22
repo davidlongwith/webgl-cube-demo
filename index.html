@@ -39,34 +39,34 @@
       // THE GRID
       
       // grid dimensions
-      var size = 800;                                               // size of the grids (2x position for squared grid)
+      var size = 800;                                               // size of the grids
       var divisions = 10;                                           // number of divisions in the grids
       
       var gridBack = new THREE.GridHelper( size, divisions );       // create the grid using GridHelper
-      gridBack.position.set(0,0,-400);                              // set grid position centerpoint(x,y,z)
+      gridBack.position.set(0,0,-(size / 2));                              // centerpoint(x,y,z) at half grid size for a square
       gridBack.rotation.x = Math.PI/2;                              // set grid rotation; rotate 180
       scene.add( gridBack );                                        // add to scene
       
       var gridFront = new THREE.GridHelper( size, divisions );     
-      gridFront.position.set(0,0,400);                            
+      gridFront.position.set(0,0,(size / 2));                            
       gridFront.rotation.x = Math.PI/2;                            
       scene.add( gridFront );
 
       var gridTop = new THREE.GridHelper( size, divisions );     
-      gridTop.position.set(0,400,0);                                                     
+      gridTop.position.set(0,(size / 2),0);                                                     
       scene.add( gridTop );
       
       var gridBottom = new THREE.GridHelper( size, divisions );     
-      gridBottom.position.set(0,-400,0);                                                     
+      gridBottom.position.set(0,-(size / 2),0);                                                     
       scene.add( gridBottom );
       
       var gridLeft = new THREE.GridHelper( size, divisions );     
-      gridLeft.position.set(-400,0,0);
+      gridLeft.position.set(-(size / 2),0,0);
       gridLeft.rotation.z = Math.PI/2;
       scene.add( gridLeft );
       
       var gridRight = new THREE.GridHelper( size, divisions );     
-      gridRight.position.set(400,0,0);
+      gridRight.position.set((size / 2),0,0);
       gridRight.rotation.z = Math.PI/2;
       scene.add( gridRight );
 
