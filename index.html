@@ -31,13 +31,21 @@
 
 			camera.position.z = 6;    // move camera back to see object
       
-      // add background grid
-      var size = 300;                                               // size of the grid
-      var divisions = 10;                                           // number of divisions in the grid
-      var gridHelper = new THREE.GridHelper( size, divisions );     // create the grid using GridHelper
-      gridHelper.position.set(0,0,-400);                            // set grid position
-      gridHelper.rotation.x = Math.PI/2;                            // set grid rotation
-      scene.add( gridHelper );                                      // add to scene
+      // GRIDS
+      
+      // general dimensions
+      var size = 300;                                               // size of the grids
+      var divisions = 10;                                           // number of divisions in the grids
+      
+      var gridBack = new THREE.GridHelper( size, divisions );       // create the grid using GridHelper
+      gridBack.position.set(0,0,-400);                              // set grid position; (x,y,z) centerpoint
+      gridBack.rotation.x = Math.PI/2;                              // set grid rotation; rotate 180
+      scene.add( gridBack );                                        // add to scene
+      
+      var gridFront = new THREE.GridHelper( size, divisions );     
+      gridFront.position.set(0,0,400);                            
+      gridFront.rotation.x = Math.PI/2;                            
+      scene.add( gridFront );                                      
       
       // LIGHTING
       
@@ -51,7 +59,7 @@
       scene.add( directionalLight );
 
 
-			var animate = function () {
+			function animate() {
 				requestAnimationFrame( animate );
 
 				cube.rotation.x += 0.01;
