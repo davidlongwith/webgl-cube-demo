@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<script src="js/r92/three.min.js"></script>
+    <script src="js/OrbitControls.js"></script>
 		<script>
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 
@@ -17,6 +18,8 @@
           1000                                      // far clipping plane
           );
 
+      var controls = new THREE.OrbitControls( camera );    // create orbit controls
+          
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );    // set render resolution
 			document.body.appendChild( renderer.domElement );
@@ -28,8 +31,10 @@
 			var material = new THREE.MeshLambertMaterial( { map: texture } );
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );    // added to center of scene by default
-
-			camera.position.z = 6;    // move camera back to see object
+    
+      //controls.update() must be called after any manual changes to the camera's transform
+      camera.position.set( 0, 0, 6 );   // x,y,z
+      controls.update();
       
       // GRIDS
       
