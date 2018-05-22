@@ -32,9 +32,13 @@
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );    // added to center of scene by default
     
-      //controls.update() must be called after any manual changes to the camera's transform
+      // backup the camera to view cube
       camera.position.set( 0, 0, 6 );   // x,y,z
+      
+      //controls.update() must be called after any manual changes to the camera's transform
       controls.update();
+      
+      
       
       // THE GRID
       
@@ -42,8 +46,8 @@
       var size = 800;                                               // size of the grids
       var divisions = 10;                                           // number of divisions in the grids
       
-      var gridBack = new THREE.GridHelper( size, divisions );       // create the grid using GridHelper
-      gridBack.position.set(0,0,-(size / 2));                              // centerpoint(x,y,z) at half grid size for a square
+      var gridBack = new THREE.GridHelper( size, divisions );       // create a plane grid using GridHelper
+      gridBack.position.set(0,0,-(size / 2));                       // centerpoint(x,y,z) at half grid size for a square
       gridBack.rotation.x = Math.PI/2;                              // set grid rotation; rotate 180
       scene.add( gridBack );                                        // add to scene
       
@@ -79,8 +83,8 @@
       var light = new THREE.AmbientLight( 0x4d4d4d );    // lightness value of 0.30
       scene.add( light );
       
-      // white directional light at (0-1) intensity
-      var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+      // (colored) directional light at (0-1) intensity
+      var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );    // white, 100%
       directionalLight.position.set(0,1,0.75);    // change light source position property (xyz clip coord)
       scene.add( directionalLight );
 
