@@ -16,7 +16,7 @@
           45,                                       // field of view (in degrees)
           window.innerWidth/window.innerHeight,     // aspect ratio
           0.1,                                      // near clipping plane
-          10000                                      // far clipping plane
+          1000                                      // far clipping plane
           );
 
       var controls = new THREE.OrbitControls( camera );    // create orbit controls
@@ -95,14 +95,14 @@
 
 			function animate() {
 
-        stats.begin();                      // monitored code goes here
+        stats.begin();                      // start stats.js; monitored code goes here
         
 				cube.rotation.x += 0.01;            // rotate and concat this amount each frame
 				cube.rotation.y += 0.01;
 
 				renderer.render(scene, camera);     // render the scene and camera
         
-        stats.end();                        // end stat monitor
+        stats.end();                        // end stats.js monitor
         
         requestAnimationFrame( animate );   // call again to loop
 			};
