@@ -31,17 +31,15 @@
 
 			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
       var texture = new THREE.TextureLoader().load( 'image-400x300.jpg' );
-      texture.minFilter = THREE.NearestFilter;    // crisper image quality like original image, less blur, more readable
-      texture.magFilter = THREE.LinearFilter;    // default, weighted average of mipmaps
+      texture.minFilter = THREE.NearestFilter;                                // crisper image quality like original image, less blur, more readable
+      texture.magFilter = THREE.LinearFilter;                                 // default; weighted average of mipmaps
 			var material = new THREE.MeshLambertMaterial( { map: texture } );
 			var cube = new THREE.Mesh( geometry, material );
-			scene.add( cube );    // added to center of scene by default
+			scene.add( cube );                                                      // added to center of scene by default
     
-      // backup the camera to view cube
-      camera.position.set( 0, 0, 6 );   // x,y,z
-      
-      //controls.update() must be called after any manual changes to the camera's transform
-      controls.update();
+      camera.position.set( 0, 0, 6 );   // move the camera back to view cube (x,y,z)
+
+      controls.update();    //controls.update() must be called after any manual changes to the camera's transform
       
       //
       // GRIDS
@@ -92,7 +90,7 @@
       scene.add( directionalLight );
 
       //
-      // requestAnimationFrame
+      // ANIMATE
       //
 
 			function animate() {
