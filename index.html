@@ -28,13 +28,16 @@
           1000                                      // far clipping plane
           );
 
-        var controls = new THREE.OrbitControls( camera );    // create orbit controls
+        var controls = new THREE.OrbitControls( camera );    // create orbit controls (OrbitControls.js)
             
-        renderer = new THREE.WebGLRenderer();
-        renderer.setSize( window.innerWidth, window.innerHeight );    // set render resolution
-        document.body.appendChild( renderer.domElement );
+        renderer = new THREE.WebGLRenderer( { antialias: true } );    // create threejs renderer
+        renderer.setPixelRatio( window.devicePixelRatio );            // set renderer to match device pixel resolution
+        renderer.setSize( window.innerWidth, window.innerHeight );    // set render resolution to full window size
+        document.body.appendChild( renderer.domElement );             // add to DOM
         
-        stats = new Stats();                  // stats.js performance monitor
+        window.addEventListener( 'resize', onWindowResize, false );   // window resize event runs onWindowResize() function
+        
+        stats = new Stats();                      // stats.js performance monitor
         stats.showPanel( 0 );                     // 0: fps, 1: ms, 2: mb, 3+: custom
         document.body.appendChild( stats.dom );   // add to DOM
 
@@ -98,15 +101,26 @@
         directionalLight.position.set(0,1,0);    // change light source position property (xyz clip coord)
         scene.add( directionalLight );
       }
-
+      
       //
-      // Animate the scene
+      // RESPONSIVE
+      //      
+      
+      // update renderer on window resize event (event listener located in init() function)
+      function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+      
       //
+      // ANIMATE
+      //
+      
 			function animate() {
-
         stats.begin();                      // start stats.js; monitored code goes here
         
-        requestAnimationFrame( animate );   // 
+        requestAnimationFrame( animate );   // start the animation loop at default 60fps
         
 				cube.rotation.x += 0.01;            // rotate and concat this amount each frame
 				cube.rotation.y += 0.01;
