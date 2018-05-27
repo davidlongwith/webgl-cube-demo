@@ -25,10 +25,9 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );    // set render resolution
 			document.body.appendChild( renderer.domElement );
       
-      // stats.js performance monitor
-      var stats = new Stats();
-      stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
-      document.body.appendChild( stats.dom );
+      var stats = new Stats();                  // stats.js performance monitor
+      stats.showPanel( 0 );                     // 0: fps, 1: ms, 2: mb, 3+: custom
+      document.body.appendChild( stats.dom );   // add to DOM
 
 			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
       var texture = new THREE.TextureLoader().load( 'image-400x300.jpg' );
@@ -44,11 +43,10 @@
       //controls.update() must be called after any manual changes to the camera's transform
       controls.update();
       
-      
-      
-      // THE GRID
-      
-      // grid dimensions
+      //
+      // GRIDS
+      //
+
       var size = 800;                                               // size of the grids
       var divisions = 10;                                           // number of divisions in the grids
       
@@ -80,10 +78,9 @@
       gridRight.rotation.z = Math.PI/2;
       scene.add( gridRight );
 
-      
-      
-      
+      //
       // LIGHTING
+      //
       
       // add soft lighting to entire scene, no light source
       var light = new THREE.AmbientLight( 0x4d4d4d );    // lightness value of 0.30
@@ -94,6 +91,9 @@
       directionalLight.position.set(0,1,0.75);    // change light source position property (xyz clip coord)
       scene.add( directionalLight );
 
+      //
+      // requestAnimationFrame
+      //
 
 			function animate() {
 
