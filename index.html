@@ -14,12 +14,17 @@
     <script src="js/stats.min.js"></script>
 		<script>
     
+      // global variables
       var camera, scene, renderer;
       var cube;
       var stats;
     
-      init();
-      animate();
+      init();       // initialize the scene
+      animate();    // animate the scene
+    
+      //
+      // INITIALIZE
+      //
     
       function init() {
         scene = new THREE.Scene();
