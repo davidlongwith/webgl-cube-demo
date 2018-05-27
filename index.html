@@ -16,7 +16,7 @@
           45,                                       // field of view (in degrees)
           window.innerWidth/window.innerHeight,     // aspect ratio
           0.1,                                      // near clipping plane
-          1000                                      // far clipping plane
+          10000                                      // far clipping plane
           );
 
       var controls = new THREE.OrbitControls( camera );    // create orbit controls
@@ -47,7 +47,7 @@
       // GRIDS
       //
 
-      var size = 800;                                               // size of the grids
+      var size = 12;                                                // size of the grids
       var divisions = 10;                                           // number of divisions in the grids
       
       var gridBack = new THREE.GridHelper( size, divisions );       // create a plane grid using GridHelper
