@@ -9,6 +9,7 @@
 	<body>
 		<script src="js/r92/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
+    <script src="js/r92/stats.min.js"></script>
 		<script>
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 
@@ -23,6 +24,11 @@
 			var renderer = new THREE.WebGLRenderer();
 			renderer.setSize( window.innerWidth, window.innerHeight );    // set render resolution
 			document.body.appendChild( renderer.domElement );
+      
+      // stats.js performance monitor
+      var stats = new Stats();
+      stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+      document.body.appendChild( stats.dom );
 
 			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
       var texture = new THREE.TextureLoader().load( 'image-400x300.jpg' );
@@ -90,15 +96,20 @@
 
 
 			function animate() {
-				requestAnimationFrame( animate );
 
+        stats.begin();
+        
 				cube.rotation.x += 0.01;
 				cube.rotation.y += 0.01;
 
 				renderer.render(scene, camera);
+        
+        stats.end();
+        
+        requestAnimationFrame( animate );
 			};
 
-			animate();
+			requestAnimationFrame( animate );
 		</script>
 	</body>
 </html>
