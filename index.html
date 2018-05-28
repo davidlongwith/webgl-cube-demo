@@ -15,54 +15,50 @@
 		<script>
     
       // global variables
-      var camera, scene, renderer;
-      var cube;
-      var stats;
+      let camera, scene, renderer;
+      let cube;
+      let stats;
     
       init();       // initialize the scene
       animate();    // animate the scene
     
-      //
       // INITIALIZE
-      //
     
       function init() {
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera( 
+        scene = new THREE.Scene();    // initialize a new scene
+        camera = new THREE.PerspectiveCamera(       // initialize a camera to view the scene
           45,                                       // field of view (in degrees)
           window.innerWidth/window.innerHeight,     // aspect ratio
           0.1,                                      // near clipping plane
           1000                                      // far clipping plane
           );
 
-        var controls = new THREE.OrbitControls( camera );    // create orbit controls (OrbitControls.js)
+        const controls = new THREE.OrbitControls( camera );    // initialize orbit controls (OrbitControls.js)
             
-        renderer = new THREE.WebGLRenderer( { antialias: true } );    // create threejs renderer
+        renderer = new THREE.WebGLRenderer( { antialias: true } );    // initialize threejs renderer
         renderer.setPixelRatio( window.devicePixelRatio );            // set renderer to match device pixel resolution
         renderer.setSize( window.innerWidth, window.innerHeight );    // set render resolution to full window size
         document.body.appendChild( renderer.domElement );             // add to DOM
         
         window.addEventListener( 'resize', onWindowResize, false );   // window resize event runs onWindowResize() function
         
-        stats = new Stats();                      // stats.js performance monitor
-        stats.showPanel( 0 );                     // 0: fps, 1: ms, 2: mb, 3+: custom
+        stats = new Stats();                      // initialize stats.js performance monitor
+        stats.showPanel( 0 );                     // select starting info panel (0: fps, 1: ms, 2: mb, 3+: custom)
         document.body.appendChild( stats.dom );   // add to DOM
 
-        var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-        var texture = new THREE.TextureLoader().load( 'image-400x300.jpg' );
+        const geometry = new THREE.BoxGeometry( 1, 1, 1 );                      // create a box with dimensions x,y,z at center of scene (default location)
+        const texture = new THREE.TextureLoader().load( 'image-400x300.jpg' );  // load custom image file
         texture.minFilter = THREE.NearestFilter;                                // crisper image quality like original image, less blur, more readable
         texture.magFilter = THREE.LinearFilter;                                 // default; weighted average of mipmaps
-        var material = new THREE.MeshLambertMaterial( { map: texture } );
-        cube = new THREE.Mesh( geometry, material );
+        const material = new THREE.MeshLambertMaterial( { map: texture } );     // use custom texture with Lambert
+        cube = new THREE.Mesh( geometry, material );                            // combine geometry and material to create a mesh object for use in the scene
         scene.add( cube );                                                      // added to center of scene by default
       
         camera.position.set( 0, 0, 6 );   // move the camera back to view cube (x,y,z)
 
         controls.update();    //controls.update() must be called after any manual changes to the camera's transform
         
-        //
-        // GRIDS
-        //
+        // The grids
 
         var size = 12;                                                // size of the grids
         var divisions = 10;                                           // number of divisions in the grids
@@ -95,9 +91,7 @@
         gridRight.rotation.z = Math.PI/2;
         scene.add( gridRight );
 
-        //
-        // LIGHTING
-        //
+        // Lighting
         
         // add soft lighting to entire scene, no light source
         var light = new THREE.AmbientLight( 0x4d4d4d );    // lightness value of 0.30
@@ -109,21 +103,18 @@
         scene.add( directionalLight );
       }
       
-      //
-      // RESPONSIVE
-      //      
       
-      // update renderer on window resize event (event listener located in init() function)
-      function onWindowResize() {
+      
+      // Responsive   
+      function onWindowResize() {   // update renderer on window resize event (event listener located in init() function)
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
+
       
-      //
-      // ANIMATE
-      //
       
+      // Render Loop
 			function animate() {
         stats.begin();                      // start stats.js; monitored code goes here
         
