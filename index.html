@@ -60,33 +60,33 @@
         
         // The grids
 
-        var size = 12;                                                // size of the grids
-        var divisions = 10;                                           // number of divisions in the grids
+        const size = 12;                                                // size of the grids
+        const divisions = 10;                                           // number of divisions in the grids
         
-        var gridBack = new THREE.GridHelper( size, divisions );       // create a plane grid using GridHelper
+        const gridBack = new THREE.GridHelper( size, divisions );       // create a plane grid using GridHelper
         gridBack.position.set(0,0,-(size / 2));                       // centerpoint(x,y,z); at half grid size for a square
         gridBack.rotation.x = Math.PI/2;                              // set grid rotation; rotate 180
         scene.add( gridBack );                                        // add to scene
         
-        var gridFront = new THREE.GridHelper( size, divisions );     
+        const gridFront = new THREE.GridHelper( size, divisions );     
         gridFront.position.set(0,0,(size / 2));                            
         gridFront.rotation.x = Math.PI/2;                            
         scene.add( gridFront );
 
-        var gridTop = new THREE.GridHelper( size, divisions );     
+        const gridTop = new THREE.GridHelper( size, divisions );     
         gridTop.position.set(0,(size / 2),0);                                                     
         scene.add( gridTop );
         
-        var gridBottom = new THREE.GridHelper( size, divisions );     
+        const gridBottom = new THREE.GridHelper( size, divisions );     
         gridBottom.position.set(0,-(size / 2),0);                                                     
         scene.add( gridBottom );
         
-        var gridLeft = new THREE.GridHelper( size, divisions );     
+        const gridLeft = new THREE.GridHelper( size, divisions );     
         gridLeft.position.set(-(size / 2),0,0);
         gridLeft.rotation.z = Math.PI/2;
         scene.add( gridLeft );
         
-        var gridRight = new THREE.GridHelper( size, divisions );     
+        const gridRight = new THREE.GridHelper( size, divisions );     
         gridRight.position.set((size / 2),0,0);
         gridRight.rotation.z = Math.PI/2;
         scene.add( gridRight );
@@ -94,11 +94,11 @@
         // Lighting
         
         // add soft lighting to entire scene, no light source
-        var light = new THREE.AmbientLight( 0x4d4d4d );    // lightness value of 0.30
+        const light = new THREE.AmbientLight( 0x4d4d4d );    // lightness value of 0.30
         scene.add( light );
         
         // (colored) directional light at (0-1) intensity
-        var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );    // (white, 100%)
+        const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );    // (white, 100%)
         directionalLight.position.set(0,1,0);    // change light source position property (xyz clip coord)
         scene.add( directionalLight );
       }
