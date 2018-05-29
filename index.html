@@ -49,7 +49,7 @@
         document.body.appendChild( stats.dom );   // add to DOM
 
         const geometry = new THREE.BoxGeometry( 1, 1, 1 );                      // create a box with dimensions x,y,z at center of scene (default location)
-        const texture = new THREE.TextureLoader().load( 'image-400x300.jpg' );  // load custom image file
+        const texture = new THREE.TextureLoader().load( 'image.png' );          // load custom image file
         texture.minFilter = THREE.NearestFilter;                                // crisper image quality like original image, less blur, more readable
         texture.magFilter = THREE.LinearFilter;                                 // default; weighted average of mipmaps
         const material = new THREE.MeshLambertMaterial( { map: texture } );     // use custom texture with Lambert
