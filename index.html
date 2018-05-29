@@ -19,10 +19,12 @@
       let cube;
       let stats;
     
-      init();       // initialize the scene
-      animate();    // animate the scene
+      init();       // initialize; stage everything for first draw
+      animate();    // animate and render the scene
+      
+      
     
-      // INITIALIZE
+      // Initialize
     
       function init() {
         scene = new THREE.Scene();    // initialize a new scene
@@ -58,12 +60,12 @@
 
         controls.update();    //controls.update() must be called after any manual changes to the camera's transform
         
-        // The grids
+        // Grids
 
         const size = 12;                                                // size of the grids
         const divisions = 10;                                           // number of divisions in the grids
         
-        const gridBack = new THREE.GridHelper( size, divisions );       // create a plane grid using GridHelper
+        const gridBack = new THREE.GridHelper( size, divisions );     // create a plane grid using GridHelper
         gridBack.position.set(0,0,-(size / 2));                       // centerpoint(x,y,z); at half grid size for a square
         gridBack.rotation.x = Math.PI/2;                              // set grid rotation; rotate 180
         scene.add( gridBack );                                        // add to scene
@@ -105,28 +107,40 @@
       
       
       
-      // Responsive   
-      function onWindowResize() {   // update renderer on window resize event (event listener located in init() function)
+      // Responsive
+      
+      // update renderer on window resize event
+      function onWindowResize() {                                     // event listener located in init() function
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
+        
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 
       
       
-      // Render Loop
+      // Animation
+      
+      // animate the scene
 			function animate() {
-        stats.begin();                      // start stats.js; monitored code goes here
+        requestAnimationFrame( animate );      // request a new frame at default 60fps
         
-        requestAnimationFrame( animate );   // start the animation loop at default 60fps
+        render();                              // call the render function to draw the scene
         
+        stats.update();                        // update stats.js fps monitor
+			}
+      
+      
+      
+      // Draw
+      
+      // draw/render this every frame
+      function render() {
 				cube.rotation.x += 0.01;            // rotate and concat this amount each frame
 				cube.rotation.y += 0.01;
-
-				renderer.render(scene, camera);     // render the scene and camera
         
-        stats.end();                        // end stats.js monitor
-			};
+        renderer.render(scene, camera);     // render the scene and camera
+      }
 
 		</script>
 	</body>
