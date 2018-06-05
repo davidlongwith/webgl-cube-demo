@@ -27,7 +27,7 @@
       Zoom in/out with mouse wheel
       </p>
     </div>
-  
+
 		<script src="js/r92/three.min.js"></script>
     <script src="js/OrbitControls.js"></script>
     <script src="js/stats.min.js"></script>
@@ -71,13 +71,13 @@
         const texture = new THREE.TextureLoader().load( 'image-300.png' );      // load custom image file
         texture.minFilter = THREE.NearestFilter;                                // crisper image quality like original image, less blur, more readable
         texture.magFilter = THREE.LinearFilter;                                 // default; weighted average of mipmaps
-        const material = new THREE.MeshLambertMaterial( { map: texture } );     // use custom texture with Lambert
+        const material = new THREE.MeshLambertMaterial( { map: texture } );     // use Lambert for custom texture
         cube = new THREE.Mesh( geometry, material );                            // combine geometry and material to create a mesh object for use in the scene
-        scene.add( cube );                                                      // added to center of scene by default
+        scene.add( cube );                                                      // add it to the scene
       
         camera.position.set( 0, 0, 6 );   // move the camera back to view cube (x,y,z)
 
-        controls.update();    //controls.update() must be called after any manual changes to the camera's transform
+        controls.update();    // "controls.update() must be called after any manual changes to the camera's transform"
         
         // Grids
 
