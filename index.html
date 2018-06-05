@@ -54,7 +54,7 @@
           1000                                      // far clipping plane
           );
 
-        renderer = new THREE.WebGLRenderer( { antialias: true } );    // initialize threejs renderer
+        renderer = new THREE.WebGLRenderer( { antialias: true } );    // initialize threejs renderer (with AA on)
         renderer.setPixelRatio( window.devicePixelRatio );            // set renderer to match device pixel resolution
         renderer.setSize( window.innerWidth, window.innerHeight );    // set render resolution to full window size
         document.body.appendChild( renderer.domElement );             // add to DOM
@@ -158,7 +158,7 @@
 				cube.rotation.x += 0.01;            // rotate and concat this amount each frame
 				cube.rotation.y += 0.01;
         
-        renderer.render(scene, camera);     // render the scene and camera
+        renderer.render(scene, camera);     // ask Three.js to render the scene and camera view using WebGL
       }
 
 		</script>
