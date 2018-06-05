@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Cubed Demo Three.js</title>
+		<title>Three.js - A Better Demo</title>
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -65,6 +65,7 @@
         const size = 12;                                                // size of the grids
         const divisions = 10;                                           // number of divisions in the grids
         
+        // position each side of the grid
         const gridBack = new THREE.GridHelper( size, divisions );     // create a plane grid using GridHelper
         gridBack.position.set(0,0,-(size / 2));                       // centerpoint(x,y,z); at half grid size for a square
         gridBack.rotation.x = Math.PI/2;                              // set grid rotation; rotate 180
