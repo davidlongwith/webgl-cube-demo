@@ -128,12 +128,14 @@
       
       // Fullscreen
       
+      // toggle key for full screen mode
       document.addEventListener("keydown", function(e) {
         if (e.keyCode == 13) {    // enter key
           toggleFullScreen();
         }
       }, false);
       
+      // full screen function prefixed for Blink(Chrome & Opera)
       function toggleFullScreen() {
         if (!document.webkitFullscreenElement) {
           document.documentElement.webkitRequestFullscreen();
