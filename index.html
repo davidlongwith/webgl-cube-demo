@@ -137,6 +137,10 @@
       function toggleFullScreen() {
         if (!document.webkitFullscreenElement) {
           document.documentElement.webkitRequestFullscreen();
+        } else {
+          if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
         }
         console.log(document.webkitIsFullScreen);
       }
