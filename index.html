@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Three.js - A Better Demo</title>
+		<title>WebGL 3D Demo</title>
     <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -122,6 +122,23 @@
         const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );    // (white, 100%)
         directionalLight.position.set(0,1,0);    // change light source position property (xyz clip coord)
         scene.add( directionalLight );
+      }
+      
+      
+      
+      // Fullscreen
+      
+      document.addEventListener("keydown", function(e) {
+        if (e.keyCode == 13) {    // enter key
+          toggleFullScreen();
+        }
+      }, false);
+      
+      function toggleFullScreen() {
+        if (!document.webkitFullscreenElement) {
+          document.documentElement.webkitRequestFullscreen();
+        }
+        console.log(document.webkitIsFullScreen);
       }
       
       
