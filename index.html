@@ -168,8 +168,8 @@
       startButton.addEventListener ("click", function() {
         const startScreen = document.getElementById( 'start-screen' );
         startScreen.classList.add( "start-screen-hidden" );
-        alert("start button works!");
-        console.log(startScreen.classList);
+        console.log("start button works!");
+        toggleFullScreen();
       });
       
       // fullscreen api function prefixed for Blink(Chrome & Opera)
