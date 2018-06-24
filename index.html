@@ -83,8 +83,42 @@
       let cube;
       let stats;
     
-      init();       // initialize; stage everything for first draw
-      animate();    // animate and render the scene
+      start();      // start the program, contains init() and animate()
+      
+      function start() {
+      
+        init();       // initialize; stage everything for first draw
+        
+        // toggle key for full screen mode
+        document.addEventListener("keydown", function(e) {
+          if (e.keyCode == 13) {    // enter key
+            toggleFullScreen();
+          }
+        }, false);
+        
+        // start button on-click functionality
+        const startButton = document.getElementById( 'start-button' );      // get ref to start button
+        startButton.addEventListener ("click", function() {                 // on button click event listener
+          const startScreen = document.getElementById( 'start-screen' );    // get ref to the start screen
+          startScreen.classList.add( "start-screen-hidden" );               // remove start screen by adding css class with display none
+          console.log("start button works!");                               // debug code
+          toggleFullScreen();                                               // enable full screen
+          animate();                                                        // animate and render the scene
+        });
+        
+        // fullscreen api function prefixed for Blink(Chrome & Opera)
+        function toggleFullScreen() {
+          if (!document.webkitFullscreenElement) {
+            document.documentElement.webkitRequestFullscreen();
+          } else {
+            if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen();
+            }
+          }
+          console.log(document.webkitIsFullScreen);
+        }
+      }
+      
       
       
     
@@ -171,37 +205,7 @@
       
       
       
-      // Fullscreen
-      
-      // toggle key for full screen mode
-      document.addEventListener("keydown", function(e) {
-        if (e.keyCode == 13) {    // enter key
-          toggleFullScreen();
-        }
-      }, false);
-      
-      const startButton = document.getElementById( 'start-button' );
-      startButton.addEventListener ("click", function() {
-        const startScreen = document.getElementById( 'start-screen' );
-        startScreen.classList.add( "start-screen-hidden" );
-        console.log("start button works!");
-        toggleFullScreen();
-      });
-      
-      // fullscreen api function prefixed for Blink(Chrome & Opera)
-      function toggleFullScreen() {
-        if (!document.webkitFullscreenElement) {
-          document.documentElement.webkitRequestFullscreen();
-        } else {
-          if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          }
-        }
-        console.log(document.webkitIsFullScreen);
-      }
-      
-      
-      
+
       // Responsive
       
       // update renderer on window resize event
