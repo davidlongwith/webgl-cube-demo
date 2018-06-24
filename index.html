@@ -19,12 +19,15 @@
         position: absolute;
         width: 100vw;
         height: 100vh;
-        padding-top: 40vh;
+        padding-top: 25vh;
         text-align: center;
-        font-size: 32px;
+        font-size: 1rem;
         color: #ffffff;
         background: #000000;
         z-index: 2;
+      }
+      #start-screen h1 {
+        font-size: 3em;
       }
       .start-screen-hidden {
         display: none;
@@ -32,28 +35,24 @@
       #start-button {
         width: 10em;
         height: 10em;
+        margin-top: 2em;
         background: green;
         color: #fff;
         border-radius: 50%;
         border: 3px solid #fff;
       }
       #start-button span {
-        font-size: 1.7em;
+        font-size: 2em;
         font-weight: bold;
       }
       #start-button:hover {
         color: blue;
         border-color: blue;
       }
-      #controls-panel {
-				position: absolute;
-				top: 0px; 
-        width: 100%;
+      #controls-message {
 				color: #ffffff;
-        margin: 0;
-				padding: 5px;
 				font-family: Monospace;
-				font-size: 13px;
+        font-size: 1.7em;
 				font-weight: bold;
 				text-align: center;
         overflow: hidden;
@@ -63,14 +62,14 @@
 	<body>
   
     <div id="start-screen">
+      <h1>WebGL Cubed Demo</h1>
+      <div id="controls-message">
+        <p>
+        Click/touch + drag to look around</br>
+        Mouse wheel or pinch/stretch to zoom
+        </p>
+      </div>
       <button id="start-button" type="button"><span>Ready!</span></button>
-    </div>
-
-    <div id="controls-panel">
-      <p>
-      Click/touch + drag to look around</br>
-      Mouse wheel or pinch/stretch to zoom
-      </p>
     </div>
 
 		<script src="js/r92/three.min.js"></script>
