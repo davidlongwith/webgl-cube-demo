@@ -95,18 +95,11 @@
       let cube;
       let stats;
     
-      start();      // start the program, contains init() and animate()
+      start();      // start the program; launches init() and animate()
       
       function start() {
       
-        init();       // initialize; stage everything for first draw
-        
-        // toggle key for full screen mode
-        document.addEventListener("keydown", function(e) {
-          if (e.keyCode == 13) {    // enter key
-            toggleFullScreen();
-          }
-        }, false);
+        init();       // ***initialize; stage everything for first draw***
         
         // start button on-click functionality
         const startButton = document.getElementById( 'start-button' );      // get ref to start button
@@ -115,7 +108,7 @@
           startScreen.classList.add( "start-screen-hidden" );               // remove start screen by adding css class with display none
           console.log("start button works!");                               // debug code
           toggleFullScreen();                                               // enable full screen
-          animate();                                                        // animate and render the scene
+          animate();                                                        // ***call animate function and render the scene***
         });
         
         // fullscreen api function prefixed for Blink(Chrome & Opera)
@@ -129,6 +122,13 @@
           }
           console.log(document.webkitIsFullScreen);
         }
+        
+        // toggle key for full screen mode
+        document.addEventListener("keydown", function(e) {
+          if (e.keyCode == 13) {    // enter key
+            toggleFullScreen();
+          }
+        }, false);
       }
       
       
@@ -220,12 +220,12 @@
 
       // Responsive
       
-      // update renderer on window resize event
+      // update on window resize event
       function onWindowResize() {                                     // event listener located in init() function
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
+				camera.aspect = window.innerWidth / window.innerHeight;       // get the new viewport size for the camera
+				camera.updateProjectionMatrix();                              // update camera with new dimensions
         
-				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( window.innerWidth, window.innerHeight );    // update renderer with new viewport dimensions
 			}
 
       
