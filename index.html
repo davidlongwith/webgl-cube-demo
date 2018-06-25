@@ -19,10 +19,6 @@
         position: absolute;
         width: 100vw;
         height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         text-align: center;
         font-size: 1rem;
         color: #ffffff;
@@ -31,6 +27,14 @@
       }
       #start-screen h1 {
         font-size: 3em;
+      }
+      .start-flex-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .start-screen-hidden {
         display: none;
@@ -65,17 +69,19 @@
 	<body>
   
     <div id="start-screen">
-      <div>
-        <h1>WebGL Cubed Demo</h1>
-      </div>
-      <div id="controls-message">
-        <p>
-        Click/touch + drag to look around</br>
-        Mouse wheel or pinch/stretch to zoom
-        </p>
-      </div>
-      <div>
-        <button id="start-button" type="button"><span>Ready!</span></button>
+      <div class="start-flex-container">
+        <div>
+          <h1>WebGL Cubed Demo</h1>
+        </div>
+        <div id="controls-message">
+          <p>
+          Click/touch + drag to look around</br>
+          Mouse wheel or pinch/stretch to zoom
+          </p>
+        </div>
+        <div>
+          <button id="start-button" type="button"><span>Ready!</span></button>
+        </div>
       </div>
     </div>
 
