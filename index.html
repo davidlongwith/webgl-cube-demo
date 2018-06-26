@@ -92,8 +92,8 @@
         </div>
         <div id="controls-message">
           <p>
-          Click/touch + drag to look around</br>
-          Mouse wheel or pinch/stretch to zoom
+          Look around: Click/touch + drag</br>
+          Zoom: Mouse wheel or pinch/stretch
           </p>
         </div>
         <div>
@@ -141,17 +141,17 @@
           addFullScreenButton();
         }
         
-        // toggle button for full screen mode
+        // full screen toggle button
         function addFullScreenButton() {
-          const fullScreenButton = document.createElement("button");
-          fullScreenButton.classList.add("full-screen-button");
-          fullScreenButton.innerHTML = "Full Screen";
+          const fullScreenButton = document.createElement("button");    // create the fullscreen button
+          fullScreenButton.classList.add("full-screen-button");         // add a class to the new button
+          fullScreenButton.innerHTML = "Full Screen";                   // add button text
           
-          const body = document.getElementsByTagName("body")[0];
-          body.appendChild(fullScreenButton);
+          const body = document.getElementsByTagName("body")[0];        // get ref to <body> element
+          body.appendChild(fullScreenButton);                           // add new button as child to <body> element
           
-          fullScreenButton.addEventListener ("click", function() {
-          toggleFullScreen();
+          fullScreenButton.addEventListener ("click", function() {      // on click
+          toggleFullScreen();                                           // run this function (toggle fullscreen mode on/off)
           });
         }
         
