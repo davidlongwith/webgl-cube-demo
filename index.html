@@ -68,6 +68,11 @@
 				text-align: center;
         overflow: hidden;
 			}
+      .full-screen-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
 		</style>
 	</head>
 	<body>
@@ -124,7 +129,23 @@
               document.webkitExitFullscreen();
             }
           }
-          console.log(document.webkitIsFullScreen);                         // debug code
+          console.log(document.webkitIsFullScreen);   // debug code
+          addFullScreenButton();
+        }
+        
+        // toggle button for full screen mode
+        
+        function addFullScreenButton() {
+          const fullScreenButton = document.createElement("button");
+          fullScreenButton.classList.add("full-screen-button");
+          fullScreenButton.innerHTML = "Full Screen";
+          
+          const canvas = document.getElementsByTagName("body")[0];
+          canvas.appendChild(fullScreenButton);
+          
+          fullScreenButton.addEventListener ("click", function() {
+          alert("did something");
+          });
         }
         
         // toggle key for full screen mode
