@@ -115,7 +115,7 @@
           animate();                                                        // ***call animate function and render the scene***
         });
         
-        // fullscreen api function prefixed for Blink(Chrome & Opera)
+        // fullscreen api function prefixed for Blink(Chrome & Opera) June 2018
         function toggleFullScreen() {
           if (!document.webkitFullscreenElement) {
             document.documentElement.webkitRequestFullscreen();
@@ -124,7 +124,7 @@
               document.webkitExitFullscreen();
             }
           }
-          console.log(document.webkitIsFullScreen);
+          console.log(document.webkitIsFullScreen);                         // debug code
         }
         
         // toggle key for full screen mode
