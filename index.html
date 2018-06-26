@@ -134,17 +134,16 @@
         }
         
         // toggle button for full screen mode
-        
         function addFullScreenButton() {
           const fullScreenButton = document.createElement("button");
           fullScreenButton.classList.add("full-screen-button");
           fullScreenButton.innerHTML = "Full Screen";
           
-          const canvas = document.getElementsByTagName("body")[0];
-          canvas.appendChild(fullScreenButton);
+          const body = document.getElementsByTagName("body")[0];
+          body.appendChild(fullScreenButton);
           
           fullScreenButton.addEventListener ("click", function() {
-          alert("did something");
+          toggleFullScreen();
           });
         }
         
