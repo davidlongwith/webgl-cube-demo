@@ -47,18 +47,26 @@
         width: 10em;
         height: 10em;
         margin-top: 2em;
-        background: green;
+        background: #005900;
+        background: radial-gradient(#005900 30%, #fff);
         color: #fff;
         border-radius: 50%;
-        border: 3px solid #fff;
+        border: 3px solid #000;
       }
       #start-button span {
         font-size: 2em;
         font-weight: bold;
+        text-shadow:
+          1px 1px 3px #000,
+          -1px -1px 3px #000;
       }
       #start-button:hover {
-        color: blue;
-        border-color: blue;
+        border-color: #fff;
+      }
+      #start-button:hover span {
+        text-shadow:
+          1px 1px 3px #fff,
+          -1px -1px 3px #fff;
       }
       #controls-message {
 				color: #ffffff;
