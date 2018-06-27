@@ -76,10 +76,15 @@
 				text-align: center;
         overflow: hidden;
 			}
-      .full-screen-button {
+      .fullscreen-button {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 15;
+        right: 15;
+        background: rgba(0,0,0,0.5);
+        font-size: 1.4em;
+        color: gray;
+        border-radius: 5%;
+        border: 2px solid gray;
       }
 		</style>
 	</head>
@@ -123,8 +128,11 @@
         startButton.addEventListener ("click", function() {                 // on button click event listener
           const startScreen = document.getElementById( 'start-screen' );    // get ref to the start screen
           startScreen.classList.add( "start-screen-hidden" );               // remove start screen by adding css class with display none
-          console.log("start button works!");                               // debug code
-          toggleFullScreen();                                               // enable full screen
+          console.log(document.webkitFullscreenEnabled);   // debug code
+          if (document.webkitFullscreenEnabled) {                           // if webkit fullscreen is supported/available
+            toggleFullScreen();                                             // go fullscreen
+            addFullScreenButton();                                          // add fullscreen toggle button
+          }
           animate();                                                        // ***call animate function and render the scene***
         });
         
@@ -137,15 +145,13 @@
               document.webkitExitFullscreen();
             }
           }
-          console.log(document.webkitIsFullScreen);   // debug code
-          addFullScreenButton();
         }
         
-        // full screen toggle button
+        // fullscreen toggle button
         function addFullScreenButton() {
           const fullScreenButton = document.createElement("button");    // create the fullscreen button
-          fullScreenButton.classList.add("full-screen-button");         // add a class to the new button
-          fullScreenButton.innerHTML = "Full Screen";                   // add button text
+          fullScreenButton.classList.add("fullscreen-button");          // add a class to the new button
+          fullScreenButton.innerHTML = "Fullscreen";                    // add button text
           
           const body = document.getElementsByTagName("body")[0];        // get ref to <body> element
           body.appendChild(fullScreenButton);                           // add new button as child to <body> element
