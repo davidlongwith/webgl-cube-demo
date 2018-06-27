@@ -129,34 +129,24 @@
           const startScreen = document.getElementById( 'start-screen' );    // get ref to the start screen
           startScreen.classList.add( "start-screen-hidden" );               // remove start screen by adding css class with display none
           if (document.webkitFullscreenEnabled) {                           // if webkit fullscreen api is supported
-            toggleFullScreen();                                             // go fullscreen
             addFullScreenButton();                                          // add fullscreen toggle button
+            toggleFullScreen();                                             // go fullscreen
           }
           animate();                                                        // ***call animate function and render the scene***
         });
         
-        // fullscreen api function prefixed for Blink(Chrome & Opera) June 2018
-        function toggleFullScreen() {                             // toggle fullscreen when called
-          if (!document.webkitFullscreenElement) {                // if webkit fullscreen not activated
-            document.documentElement.webkitRequestFullscreen();   // run webkit's fullscreen function
-          } else {
-            if (document.webkitExitFullscreen) {                  // if doc is already fullscreen the exit property will be available
-              document.webkitExitFullscreen();                    // request webkit's exit fullscreen function
-            }
-          }
-        }
-        
         // fullscreen toggle button
+        let fullScreenButton;
         function addFullScreenButton() {
-          const fullScreenButton = document.createElement("button");    // create the fullscreen button
+          fullScreenButton = document.createElement("button");    // create the fullscreen button
           fullScreenButton.classList.add("fullscreen-button");          // add a class to the new button
-          fullScreenButton.innerHTML = "Fullscreen";                    // add button text
-          
+          fullScreenButton.innerHTML = "Exit";                          // add button text
+
           const body = document.getElementsByTagName("body")[0];        // get ref to <body> element
           body.appendChild(fullScreenButton);                           // add new button as child to <body> element
           
           fullScreenButton.addEventListener ("click", function() {      // on click
-          toggleFullScreen();                                           // run this function (toggle fullscreen mode on/off)
+          toggleFullScreen();                                           // toggle fullscreen mode on/off
           });
         }
         
@@ -166,6 +156,19 @@
             toggleFullScreen();
           }
         }, false);
+        
+        // fullscreen api function prefixed for Blink(Chrome & Opera) June 2018
+        function toggleFullScreen() {                             // toggle fullscreen when called
+          if (!document.webkitFullscreenElement) {                // if webkit fullscreen not activated
+            document.documentElement.webkitRequestFullscreen();   // run webkit's fullscreen function
+            fullScreenButton.innerHTML = "Exit";
+          } else {
+            if (document.webkitExitFullscreen) {                  // if doc is already fullscreen the exit property will be available
+              document.webkitExitFullscreen();                    // request webkit's exit fullscreen function
+              fullScreenButton.innerHTML = "Fullscreen";
+            }
+          }
+        }
       }
       
       
