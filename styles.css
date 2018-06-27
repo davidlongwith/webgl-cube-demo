@@ -27,6 +27,10 @@ html, body, canvas {
 #start-screen h1 {
   font-size: 3em;
 }
+#start-screen p {
+  font-size: 1.2em;
+  font-family: Monospace;
+}
 .start-flex-container {
   width: 100%;
   height: 100%;
@@ -64,12 +68,15 @@ html, body, canvas {
     -1px -1px 3px #fff;
 }
 #controls-message {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
   color: #ffffff;
   font-family: Monospace;
-  font-size: 1.7em;
+  font-size: 1.2em;
   font-weight: bold;
   text-align: center;
-  overflow: hidden;
 }
 .fullscreen-exit-button {
   position: absolute;
