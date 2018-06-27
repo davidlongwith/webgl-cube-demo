@@ -82,12 +82,13 @@
         right: 15;
         background: rgba(0,0,0,0.5);
         font-size: 1.4em;
-        color: gray;
+        color: #808080;
         border-radius: 5%;
-        border: 2px solid gray;
+        border: 2px solid #808080;
       }
       .fullscreen-button {
         color: #fff;
+        border: 2px solid #fff;
       }
 		</style>
 	</head>
@@ -152,17 +153,17 @@
         }
         
         // fullscreen api function prefixed for Blink(Chrome & Opera) June 2018
-        function toggleFullScreen() {                                 // toggle fullscreen when called
-          if (!document.webkitFullscreenElement) {                    // if webkit fullscreen not activated
-            document.documentElement.webkitRequestFullscreen();       // go fullscreen with webkit's fullscreen function
-            fullScreenButton.innerHTML = "Exit";
-            fullScreenButton.classList.remove("fullscreen-button");
-            fullScreenButton.classList.add("fullscreen-exit-button");
+        function toggleFullScreen() {                                   // toggle fullscreen when called
+          if (!document.webkitFullscreenElement) {                      // if webkit fullscreen not activated
+            document.documentElement.webkitRequestFullscreen();         // go fullscreen with webkit's fullscreen function
+            fullScreenButton.innerHTML = "Exit";                        // add button text
+            fullScreenButton.classList.remove("fullscreen-button");     // remove css class (if active)
+            fullScreenButton.classList.add("fullscreen-exit-button");   // add css class
           } else {
-            if (document.webkitExitFullscreen) {                      // if doc is already fullscreen the exit property will be available
-              document.webkitExitFullscreen();                        // request webkit's exit fullscreen function
-              fullScreenButton.innerHTML = "Fullscreen";
-              fullScreenButton.classList.add("fullscreen-button");
+            if (document.webkitExitFullscreen) {                        // if fullscreen the exit property will be available
+              document.webkitExitFullscreen();                          // request webkit's exit fullscreen function
+              fullScreenButton.innerHTML = "Fullscreen";                // change button text
+              fullScreenButton.classList.add("fullscreen-button");      // add css class (different colors)
             }
           }
         }
