@@ -128,8 +128,7 @@
         startButton.addEventListener ("click", function() {                 // on button click event listener
           const startScreen = document.getElementById( 'start-screen' );    // get ref to the start screen
           startScreen.classList.add( "start-screen-hidden" );               // remove start screen by adding css class with display none
-          console.log(document.webkitFullscreenEnabled);   // debug code
-          if (document.webkitFullscreenEnabled) {                           // if webkit fullscreen is supported/available
+          if (document.webkitFullscreenEnabled) {                           // if webkit fullscreen api is supported
             toggleFullScreen();                                             // go fullscreen
             addFullScreenButton();                                          // add fullscreen toggle button
           }
@@ -137,12 +136,12 @@
         });
         
         // fullscreen api function prefixed for Blink(Chrome & Opera) June 2018
-        function toggleFullScreen() {
-          if (!document.webkitFullscreenElement) {
-            document.documentElement.webkitRequestFullscreen();
+        function toggleFullScreen() {                             // toggle fullscreen when called
+          if (!document.webkitFullscreenElement) {                // if webkit fullscreen not activated
+            document.documentElement.webkitRequestFullscreen();   // run webkit's fullscreen function
           } else {
-            if (document.webkitExitFullscreen) {
-              document.webkitExitFullscreen();
+            if (document.webkitExitFullscreen) {                  // if doc is already fullscreen the exit property will be available
+              document.webkitExitFullscreen();                    // request webkit's exit fullscreen function
             }
           }
         }
