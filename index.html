@@ -150,13 +150,6 @@
           });
         }
         
-        // toggle key for full screen mode
-        document.addEventListener("keydown", function(e) {
-          if (e.keyCode == 13) {    // enter key
-            toggleFullScreen();
-          }
-        }, false);
-        
         // fullscreen api function prefixed for Blink(Chrome & Opera) June 2018
         function toggleFullScreen() {                             // toggle fullscreen when called
           if (!document.webkitFullscreenElement) {                // if webkit fullscreen not activated
@@ -169,6 +162,13 @@
             }
           }
         }
+        
+        // toggle key for full screen mode
+        document.addEventListener("keydown", function(e) {
+          if (e.keyCode == 13) {    // enter key
+            toggleFullScreen();
+          }
+        }, false);
       }
       
       
