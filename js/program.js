@@ -60,12 +60,8 @@ function start() {
   }, false);
   
   function landscapeMode() {
-    lockedAllowed = window.screen.lockOrientation;
-    if (lockedAllowed) {
-      console.log('Locked!');
-    } else {
-      console.log('lock failed...');
-    }
+    screen.orientation.lock('landscape');
+  //  console.log(screen.orientation);
   }
 }
 
