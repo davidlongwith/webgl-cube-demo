@@ -18,6 +18,7 @@ function start() {
     if (document.webkitFullscreenEnabled) {                           // if webkit fullscreen api is supported
       addFullScreenButton();                                          // add fullscreen toggle button
       toggleFullScreen();                                             // go fullscreen
+      landscapeMode();
     }
     animate();                                                        // ***call animate function and render the scene***
   });
@@ -57,6 +58,15 @@ function start() {
       toggleFullScreen();
     }
   }, false);
+  
+  function landscapeMode() {
+    lockedAllowed = window.screen.lockOrientation;
+    if (lockedAllowed) {
+      console.log('Locked!');
+    } else {
+      console.log('lock failed...');
+    }
+  }
 }
 
 
