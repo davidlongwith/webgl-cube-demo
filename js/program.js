@@ -18,7 +18,6 @@ function start() {
     if (document.webkitFullscreenEnabled) {                           // if webkit fullscreen api is supported
       addFullScreenButton();                                          // add fullscreen toggle button
       toggleFullScreen();                                             // go fullscreen
-      landscapeMode();
     }
     animate();                                                        // ***call animate function and render the scene***
   });
@@ -40,6 +39,7 @@ function start() {
   function toggleFullScreen() {                                   // toggle fullscreen when called
     if (!document.webkitFullscreenElement) {                      // if webkit fullscreen not activated
       document.documentElement.webkitRequestFullscreen();         // go fullscreen with webkit's fullscreen function
+      screen.orientation.lock('landscape');                       // lock screen to landscape mode on mobile devices (Chrome, working draft)
       fullScreenButton.innerHTML = "Exit";                        // add button text
       fullScreenButton.classList.remove("fullscreen-button");     // remove css class (if active)
       fullScreenButton.classList.add("fullscreen-exit-button");   // add css class
@@ -58,11 +58,6 @@ function start() {
       toggleFullScreen();
     }
   }, false);
-  
-  function landscapeMode() {
-    screen.orientation.lock('landscape');
-  //  console.log(screen.orientation);
-  }
 }
 
 

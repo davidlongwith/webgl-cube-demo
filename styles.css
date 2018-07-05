@@ -28,7 +28,7 @@ html, body, canvas {
   font-size: 3em;
 }
 #start-screen p {
-  font-size: 1.2em;
+  font-size: 1.4em;
   font-family: Monospace;
 }
 .start-flex-container {
@@ -74,7 +74,7 @@ html, body, canvas {
   padding: 5px;
   color: #ffffff;
   font-family: Monospace;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
   text-align: center;
 }
