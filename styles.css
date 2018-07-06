@@ -59,10 +59,12 @@ html, body, canvas {
     1px 1px 3px #000,
     -1px -1px 3px #000;
 }
-#start-button:hover {
+#start-button:hover,
+#start-button:active {
   border-color: #fff;
 }
-#start-button:hover span {
+#start-button:hover span,
+#start-button:active span {
   text-shadow:
     1px 1px 3px #fff,
     -1px -1px 3px #fff;
