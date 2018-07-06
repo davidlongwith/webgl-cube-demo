@@ -23,9 +23,9 @@ function start() {
   });
   
   // fullscreen toggle button
-  let fullScreenButton;
+  let fullScreenButton;                                           // declare button var here for multi-function use
   function addFullScreenButton() {
-    fullScreenButton = document.createElement("button");    // create the fullscreen button
+    fullScreenButton = document.createElement("button");          // create the fullscreen button
 
     const body = document.getElementsByTagName("body")[0];        // get ref to <body> element
     body.appendChild(fullScreenButton);                           // add new button as child to <body> element
