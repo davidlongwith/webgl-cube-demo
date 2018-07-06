@@ -1,4 +1,8 @@
 
+//
+// WebGL Cube Demo
+//
+
 // global variables
 let camera, scene, renderer;
 let cube;
@@ -139,8 +143,8 @@ function init() {
   scene.add( light );
   
   // (colored) directional light at (0-1) intensity
-  const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );    // (white, 100%)
-  directionalLight.position.set(0,1,0);    // change light source position property (xyz clip coord)
+  const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );   // (white, 100%)
+  directionalLight.position.set(0,1,0);                                 // change light source position property (xyz clip coord)
   scene.add( directionalLight );
 }
 
