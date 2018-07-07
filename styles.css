@@ -26,6 +26,8 @@ html, body, canvas {
 }
 #start-screen h1 {
   font-size: 3em;
+  font-family: Impact, Charcoal, sans-serif;
+  font-weight: bold;
 }
 #start-screen p {
   font-size: 1.4em;

@@ -71,12 +71,13 @@ function start() {
 
 function init() {
   scene = new THREE.Scene();    // initialize a new scene
-  camera = new THREE.PerspectiveCamera(       // initialize a camera to view the scene
-    45,                                       // field of view (in degrees)
-    window.innerWidth/window.innerHeight,     // aspect ratio
-    0.1,                                      // near clipping plane
-    1000                                      // far clipping plane
-    );
+  
+  camera = new THREE.PerspectiveCamera(        // initialize a camera to view the scene
+      45,                                      // field of view (in degrees)
+      window.innerWidth/window.innerHeight,    // aspect ratio
+      0.1,                                     // near clipping plane
+      1000                                     // far clipping plane
+      );
 
   renderer = new THREE.WebGLRenderer( { antialias: true } );    // initialize threejs renderer (with AA on)
   renderer.setPixelRatio( window.devicePixelRatio );            // set renderer to match device pixel resolution
