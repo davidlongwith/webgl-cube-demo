@@ -21,7 +21,7 @@ function start() {
     startScreen.classList.add( "start-screen-hidden" );               // remove start screen by adding css class with display none
     if (document.webkitFullscreenEnabled) {                           // if webkit fullscreen api is supported
       addFullScreenButton();                                          // add fullscreen toggle button
-      toggleFullScreen();                                             // go fullscreen
+      toggleFullScreen();                                             // go fullscreen with custom function
     }
     animate();                                                        // ***call animate function and render the scene***
   });
@@ -45,8 +45,8 @@ function start() {
       document.documentElement.webkitRequestFullscreen();         // go fullscreen with webkit's fullscreen function
       screen.orientation.lock('landscape');                       // lock screen to landscape mode on mobile devices (Chrome, working draft)
       fullScreenButton.innerHTML = "Exit";                        // add button text
-      fullScreenButton.classList.remove("fullscreen-button");     // remove css class (if active)
-      fullScreenButton.classList.add("fullscreen-exit-button");   // add css class
+      fullScreenButton.classList.remove("fullscreen-button");     // remove button css class (if toggled)
+      fullScreenButton.classList.add("fullscreen-exit-button");   // add button css class
     } else {
       if (document.webkitExitFullscreen) {                        // if fullscreen the exit property will be available
         document.webkitExitFullscreen();                          // request webkit's exit fullscreen function
@@ -57,9 +57,9 @@ function start() {
   }
   
   // toggle key for full screen mode
-  document.addEventListener("keydown", function(e) {
-    if (e.keyCode == 13) {    // enter key
-      toggleFullScreen();
+  document.addEventListener("keydown", function(e) {    // event listener for key press
+    if (e.keyCode == 13) {                              // enter key
+      toggleFullScreen();                               // toggle full screen custom function
     }
   }, false);
 }
